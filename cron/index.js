@@ -103,4 +103,4 @@ const run = async (name, url, device) => {
   return null;
 };
 
-run("kitalulus", "https://kerja.kitalulus.com", "mobile");
+run("kitalulus", "https://kerja.kitalulus.com/id", "mobile");
