@@ -1,0 +1,37 @@
+name: Web Perf
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install
+        run: npm install
+
+      - name: Run Cron
+        run: npm run cron
+        env:
+          PSI_API_KEY: ${{ secrets.PSI_API_KEY }}
+
+      - name: Commit files report to main
+        run: |
+          git config --local user.email "zanuar19@gmail.com"
+          git config --local user.name "benny"
+          git config --global --add safe.directory /github/workspace
+          git add -A
+          git commit -m "Generated report" --no-verify
+
+      - name: Push report to main
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GIT_TOKEN }}
+          branch: main
+          directory: ./reports
+          force: true

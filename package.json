@@ -1,0 +1,25 @@
+{
+  "name": "perf",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "cron": "node ./cron/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bennyzanuar/perf.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bennyzanuar/perf/issues"
+  },
+  "type": "module",
+  "homepage": "https://github.com/bennyzanuar/perf#readme",
+  "dependencies": {
+    "app-root-dir": "^1.0.2",
+    "dotenv": "^16.0.1",
+    "node-fetch": "^3.2.6"
+  }
+}
