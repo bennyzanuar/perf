@@ -13,14 +13,14 @@ const dateTime = new Date().toLocaleTimeString("id-ID", {
 });
 
 const dformat = `${date.replace(new RegExp("/", "g"), "-")}T${dateTime}`;
-console.log(dformat);
 
 export const REPORT_DIR = path.join(path.resolve(appRootDir.get()), `/reports`);
-export const REPORT_JSON_FILE = path.join(REPORT_DIR, `/${dformat}.json`);
-export const REPORT_TS_FILE = path.join(REPORT_DIR, `/${dformat}.ts`);
+export const REPORT_JSON_FILE = path.join(REPORT_DIR, `/cron-${dformat}.json`);
+export const REPORT_TS_FILE = path.join(REPORT_DIR, `/cron-${dformat}.ts`);
 
 export const REPORT_JSON_FILE_CURRENT = path.join(REPORT_DIR, `/current.json`);
 export const REPORT_TS_FILE_CURRENT = path.join(REPORT_DIR, `/current.ts`);
+export const LAST_UPDATED = path.join(REPORT_DIR, `/LAST_UPDATED.txt`);
 
 export const writeFile = (filename, content) => {
   return new Promise(function (resolve, reject) {
@@ -39,6 +39,10 @@ export const writeNewReport = (content) => {
   writeFile(
     REPORT_TS_FILE_CURRENT,
     `export default ${JSON.stringify(content)}`
+  );
+  writeFile(
+    LAST_UPDATED,
+    `${date.replace(new RegExp("/", "g"), "-")} ${dateTime}`
   );
 };
 
