@@ -7,9 +7,11 @@ import appRootDir from "app-root-dir";
 
 const d = new Date();
 
-const date = new Date().toLocaleDateString("id-ID", {
-  timeZone: "Asia/Jakarta",
-});
+const date = new Date()
+  .toLocaleDateString("id-ID", {
+    timeZone: "Asia/Jakarta",
+  })
+  .replace("/", "-");
 const dateTime = new Date().toLocaleTimeString("id-ID", {
   timeZone: "Asia/Jakarta",
 });
@@ -39,7 +41,6 @@ const run = async (name, url, device) => {
     url
   )}&key=${process.env.PSI_API_KEY}&strategy=${device}`;
 
-  console.log("PSI_API_KEY ", process.env.PSI_API_KEY);
   try {
     const resp = await fetch(URL, {
       method: "GET",
