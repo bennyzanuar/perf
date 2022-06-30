@@ -1,0 +1,1 @@
+export default {"perf":0.22,"fid":30,"lcp":10885,"cls":0.1,"fmp":6937.5,"fcp":5412.5,"fci":0,"tbt":1121.5,"tti":12724.5,"si":16311.370344330167,"size":2350356,"req":131,"name":"kitalulus","device":"mobile"}
