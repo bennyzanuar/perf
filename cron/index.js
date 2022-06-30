@@ -19,6 +19,9 @@ export const REPORT_DIR = path.join(path.resolve(appRootDir.get()), `/reports`);
 export const REPORT_JSON_FILE = path.join(REPORT_DIR, `/${dformat}.json`);
 export const REPORT_TS_FILE = path.join(REPORT_DIR, `/${dformat}.ts`);
 
+export const REPORT_JSON_FILE_CURRENT = path.join(REPORT_DIR, `/current.json`);
+export const REPORT_TS_FILE_CURRENT = path.join(REPORT_DIR, `/current.ts`);
+
 export const writeFile = (filename, content) => {
   return new Promise(function (resolve, reject) {
     fs.writeFile(filename, content, "utf-8", function (err) {
@@ -31,6 +34,12 @@ export const writeFile = (filename, content) => {
 export const writeNewReport = (content) => {
   writeFile(REPORT_JSON_FILE, JSON.stringify(content));
   writeFile(REPORT_TS_FILE, `export default ${JSON.stringify(content)}`);
+
+  writeFile(REPORT_JSON_FILE_CURRENT, JSON.stringify(content));
+  writeFile(
+    REPORT_TS_FILE_CURRENT,
+    `export default ${JSON.stringify(content)}`
+  );
 };
 
 const run = async (name, url, device) => {
