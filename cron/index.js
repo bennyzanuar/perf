@@ -6,10 +6,15 @@ import path from "path";
 import appRootDir from "app-root-dir";
 
 const d = new Date();
-const dformat =
-  [d.getMonth() + 1, d.getDate(), d.getFullYear()].join("-") +
-  " " +
-  [d.getHours(), d.getMinutes(), d.getSeconds()].join(":");
+
+const date = new Date().toLocaleDateString("id-ID", {
+  timeZone: "Asia/Jakarta",
+});
+const dateTime = new Date().toLocaleTimeString("id-ID", {
+  timeZone: "Asia/Jakarta",
+});
+
+const dformat = `${date}T${dateTime}`;
 
 export const REPORT_DIR = path.join(path.resolve(appRootDir.get()), `/reports`);
 export const REPORT_JSON_FILE = path.join(REPORT_DIR, `/${dformat}.json`);
