@@ -5,18 +5,15 @@ import fs from "fs";
 import path from "path";
 import appRootDir from "app-root-dir";
 
-const d = new Date();
-
-const date = new Date()
-  .toLocaleDateString("id-ID", {
-    timeZone: "Asia/Jakarta",
-  })
-  .replace("/", "-");
+const date = new Date().toLocaleDateString("id-ID", {
+  timeZone: "Asia/Jakarta",
+});
 const dateTime = new Date().toLocaleTimeString("id-ID", {
   timeZone: "Asia/Jakarta",
 });
 
-const dformat = `${date}T${dateTime}`;
+const dformat = `${date.replace(new RegExp("/", "g"), "-")}T${dateTime}`;
+console.log(dformat);
 
 export const REPORT_DIR = path.join(path.resolve(appRootDir.get()), `/reports`);
 export const REPORT_JSON_FILE = path.join(REPORT_DIR, `/${dformat}.json`);
