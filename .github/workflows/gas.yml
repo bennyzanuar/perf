@@ -1,4 +1,4 @@
-name: Web Perf
+name: Web Perf Manual
 
 on:
   workflow_dispatch:
